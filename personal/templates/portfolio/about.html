@@ -1,0 +1,199 @@
+{% extends 'portfolio/base.html' %}
+{% load static %} {% block title%}About{%endblock %} 
+{% block content %}
+<style>
+  .container {
+    max-width: 100%;
+    margin: 20px;
+    padding: 20px 20px;
+  }
+
+  .about-section {
+    padding-top: 30px;
+  }
+
+  /* Responsive Grid */
+  .about-grid {
+    display: flex;
+    flex-direction: column; /* Stacked on mobile */
+    gap: 50px;
+    width: 100%;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .about-grid {
+      flex-direction: row; /* Side-by-side on desktop */
+      text-align: left;
+    }
+  }
+
+  /* Image Styles */
+  .about-image {
+    flex: 1;
+    text-align: center;
+  }
+
+  .image-wrapper img {
+    margin-top: 70px;
+    width: 100%;
+    max-width: 430px;
+    border-radius: 35px;
+    box-shadow: 0 10px 30px rgb(11, 255, 28);
+  }
+
+  .quote {
+    font-size: 28px;
+    font-style: italic;
+    color: #000000;
+    margin-top: 70px;
+  }
+
+  /* Content Styles */
+  .about-content {
+    flex: 1.2;
+    margin-right: 50px;
+  }
+
+  .about-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffffffa5;
+    margin-top: 30px;
+  }
+
+  /* Skill Bars */
+  .skills {
+    margin: 30px 0;
+  }
+
+  .skill-item {
+    margin-bottom: 25px;
+  }
+
+  .skill-item span {
+    color: aliceblue;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: block;
+    font-size: 22px;
+    margin-bottom: 5px;
+  }
+
+  .progress-bar {
+    background: #ffffffe1;
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .progress {
+    background: #00ff04;
+    height: 100%;
+  }
+
+  /* Button */
+  .btn {
+    display: block;
+    margin-top: 40px;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px 15px 5px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 40px;
+    font-weight: 400;
+    background: black;
+    color: white;
+    border: 5px solid yellowgreen;
+    cursor: pointer;
+    transition: background 0.9s;
+  }
+
+  .btn:hover {
+    background: #00f708;
+    color: #000000;
+  }
+
+  p {
+    background-color: #ffffffea;
+    color: #251c0c;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    border-radius: 20px;
+  }
+</style>
+<section class="about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image">
+        <div class="image-wrapper">
+          <img src="{% static 'images/me.avif' %}" alt="Alex's Portrait" />
+        </div>
+        <p class="quote">
+          Building user-friendly experiences, one line at a time.
+        </p>
+      </div>
+
+      <div class="about-content">
+        <h2>About Me</h2>
+        <p>
+          Hello! I'm <strong>Divesh Choudhary</strong>, a developer
+          in the making with a strong passion for coding and 
+          continuous learning. My journey into programming began
+          with curiosity, which quickly grew into a genuine love for 
+          building things from scratch.
+        </p>
+
+        <div class="skills">
+          <div class="skill-item">
+            <span>Python</span>
+            <div class="progress-bar">
+              <div class="progress" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span>Django</span>
+            <div class="progress-bar">
+              <div class="progress" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span>JavaScript</span>
+            <div class="progress-bar">
+              <div class="progress" style="width: 75%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span>CSS & Tailwind</span>
+            <div class="progress-bar">
+              <div class="progress" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span>Bootstap</span>
+            <div class="progress-bar">
+              <div class="progress" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span>RestApi</span>
+            <div class="progress-bar">
+              <div class="progress" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span>Flask</span>
+            <div class="progress-bar">
+              <div class="progress" style="width: 85%"></div>
+            </div>
+          </div>
+        </div>
+        <!-- <a href="#" class="btn">My Resume</a> -->
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

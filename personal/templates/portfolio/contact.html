@@ -1,0 +1,265 @@
+{% extends 'portfolio/base.html' %} 
+{% load static %} 
+{% block title %}Contact{%endblock %} 
+{% block extra_css %}
+<style>
+  /* CONTAINER */
+  .contact-container {
+    max-width: 1100px;
+    margin: 120px auto 80px;
+    padding: 0 30px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+
+  /* LEFT SIDE */
+  .contact-info h1 {
+    font-size: 42px;
+    color: #00ff88;
+    margin-bottom: 20px;
+  }
+
+  .contact-info p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #ffffffcc;
+    margin-bottom: 25px;
+  }
+
+  .contact-info a.email-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #00ff88;
+    text-decoration: none;
+  }
+
+  .contact-info a.email-link:hover {
+    text-decoration: underline;
+  }
+
+  /* SOCIAL ICONS */
+  .contact-socials {
+    margin-top: 25px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .contact-socials img {
+    width: 38px;
+    height: 38px;
+    padding: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all 0.25s ease;
+  }
+
+  .contact-socials img:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0, 255, 136, 0.6);
+    background: rgba(0, 255, 136, 0.25);
+  }
+
+  /* FORM */
+  .contact-form {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 32px;
+    border-radius: 22px;
+
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.45);
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    font-family: inherit;
+  }
+
+  .contact-form textarea {
+    resize: none;
+    height: 150px;
+  }
+
+  .contact-form button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 30px;
+    background: #00ff88;
+    color: #0b0b0b;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.25s ease;
+  }
+
+  .contact-form button:hover {
+    background: #00e079;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .contact-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .success-message {
+    grid-column: span 2;
+    margin-bottom: 20px;
+    padding: 14px 20px;
+    border-radius: 12px;
+
+    background: rgba(0, 255, 136, 0.712);
+    color: #00ff88;
+    font-weight: 600;
+    text-align: center;
+
+    box-shadow: 0 8px 20px rgba(0, 255, 136, 0.35);
+  }
+
+  .success-message {
+    grid-column: span 2;
+    margin-bottom: 20px;
+    padding: 14px 20px;
+    border-radius: 12px;
+
+    background: rgba(0, 255, 136, 0.15);
+    color: #00ff88;
+    font-weight: 600;
+    text-align: center;
+
+    box-shadow: 0 8px 20px rgba(0, 255, 136, 0.35);
+    opacity: 1;
+    transition: opacity 0.6s ease;
+  }
+
+  .success-message.hide {
+    opacity: 0;
+  }
+
+  @media (max-width: 768px) {
+    .success-message {
+      grid-column: span 1;
+    }
+  }
+
+  .contact-services h3 {
+    margin-top: 25px;
+    margin-bottom: 12px;
+    font-size: 20px;
+    color: #00ff88;
+  }
+
+  .contact-services ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .contact-services li {
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: #ffffffcc;
+  }
+
+  .availability {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  background: rgba(0, 255, 136, 0.15);
+  color: #00ff88;
+  font-weight: 600;
+}
+
+.form-note {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+</style>
+{% endblock %} {% block content %}
+<div class="contact-container">
+  <!-- LEFT -->
+  <div class="contact-info">
+    <h1>Contact Me</h1>
+
+    <div class="contact-services">
+      <h3>I can help you with</h3>
+      <ul>
+        <li>✔ Backend development using Python & Django</li>
+        <li>✔ REST API development</li>
+        <li>✔ Database design & integration</li>
+        <li>✔ Student / internship-level projects</li>
+      </ul>
+      <span class="availability">
+        🟢 Available for internships & projects
+      </span>
+    </div>
+
+
+
+    <a class="email-link" href="mailto:yourmail@gmail.com">
+      📧 picodewithme@gmail.com
+    </a>
+
+    <div class="contact-socials">
+      <a href="https://github.com/yourusername" target="_blank">
+        <img src="{% static 'images/github.png' %}" alt="GitHub" />
+      </a>
+
+      <a href="https://linkedin.com/in/yourusername" target="_blank">
+        <img src="{% static 'images/linkedin.png' %}" alt="LinkedIn" />
+      </a>
+
+      <a href="https://instagram.com/yourusername" target="_blank">
+        <img src="{% static 'images/instagram.png' %}" alt="Instagram" />
+      </a>
+    </div>
+  </div>
+  
+  <!-- RIGHT -->
+  <form method="post" class="contact-form">
+    <p class="form-note">
+      Your information is safe. I’ll only use it to reply to your message.
+    </p>
+    
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" placeholder="Your Message" required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <p>
+    Have a project, internship, or collaboration in mind? Feel free to reach
+    out — I usually respond within 24 hours.
+  </p>
+
+  {% if messages %} {% for message in messages %}
+  <div class="success-message" id="successMessage">{{ message }}</div>
+  {% endfor %} {% endif %}
+</div>
+<script>
+  setTimeout(() => {
+    const msg = document.getElementById("successMessage");
+    if (msg) {
+      msg.classList.add("hide");
+      setTimeout(() => msg.remove(), 600);
+    }
+  }, 3500); // visible for 3.5 seconds
+</script>
+
+{% endblock %}

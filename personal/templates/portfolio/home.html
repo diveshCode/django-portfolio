@@ -1,0 +1,174 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block extra_css %}
+<style>
+  /* -------- RESET -------- */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* -------- HERO SECTION -------- */
+  .hero {
+    max-width: 2000px;
+    margin: 80px auto 0;
+    padding: 48px 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* -------- LEFT CONTENT -------- */
+  .hero-title {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  .hero-text {
+    margin-top: 24px;
+    color: #d1d5db;
+    max-width: 420px;
+    font-size: 1rem;
+  }
+
+  /* -------- SKILLS -------- */
+  .skills {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .skill {
+    height: 36px;
+    padding: 0 30px;
+    padding-bottom: 5px;
+    border-radius: 999px;
+    border: 1px solid #333;
+    background: #dad0d0;
+    display: flex;
+    color: #333;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+
+  /* -------- BUTTON -------- */
+  .btn-wrapper {
+    margin-top: 32px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: #00ff88;
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+
+  .btn:hover {
+    transform: scale(1.05);
+  }
+
+  /* -------- IMAGE CARD -------- */
+  .image-card {
+    position: relative;
+  }
+
+  .image-bg {
+    background: #fb923c;
+    border-radius: 40px;
+    padding: 32px;
+  }
+
+  .image-bg img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+
+  /* -------- FLOATING BUTTON -------- */
+  .float-btn {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+  }
+
+  .float-btn:hover {
+    transform: scale(1.05);
+  }
+
+  span{
+    color:#ff7b00;
+    font-weight: 700;
+    font-size: 30px;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+
+  <!-- Left Content -->
+  <div>
+    <h1 class="hero-title">
+      Python<br />Developer
+    </h1>
+
+    <p class="hero-text">
+      Currently focused on <span>Backend Development</span>, with a strong interest in Python and Django. I build efficient applications, explore modern technologies, and continuously improve my problem-solving skills through consistent practice and real-world projects.
+    </p>
+
+    <div class="skills">
+      <div class="skill">Python</div>
+      <div class="skill">Django</div>
+      <div class="skill">FastAPI</div>
+      <div class="skill">Flask</div>
+    </div>
+
+    <div class="btn-wrapper">
+      <a href="{% url 'contact' %}" class="btn">Contact Me</a>
+    </div>
+  </div>
+
+  <!-- Right Image -->
+  <div class="image-card">
+    <div class="image-bg">
+      <img
+        src="https://imgs.search.brave.com/aMcoeFwZ2jDe9a2uY4cH9ffctXanLda-E62pQs6ubnk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9wcm9m/aWxlLWFub255bW91/cy1mYWNlLWljb24t/Z3JheS1zaWxob3Vl/dHRlLXBlcnNvbi1t/YWxlLWJ1c2luZXNz/bWFuLXByb2ZpbGUt/ZGVmYXVsdC1hdmF0/YXItcGhvdG8tcGxh/Y2Vob2xkZXItaXNv/bGF0ZWQtd2hpdGUt/MTA3MDAzODI0Lmpw/Zw"
+        alt="Profile"
+      />
+    </div>
+
+    <a href="{% url 'about' %}" class="float-btn">↗</a>
+  </div>
+
+</section>
+{% endblock %}

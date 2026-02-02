@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background:
+          linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+          url('{% static "images/bgimg.webp" %}') center/cover no-repeat;
+        color: #f5f5f5;
+      }
+
+      /* NAVBAR */
+      .nav-container {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 70px;
+        backdrop-filter: blur(10px);
+        background: rgba(20, 20, 20, 0.75);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
+        z-index: 1000;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+      }
+
+      .nav-container h2 {
+        font-size: 26px;
+        color: #00ff88;
+        letter-spacing: 1px;
+      }
+
+      nav {
+        display: flex;
+        gap: 22px;
+      }
+
+      nav > a {
+        text-decoration: none;
+        font-size: 16px;
+        color: #eaeaea;
+        padding: 8px 18px;
+        border-radius: 20px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      nav > a:hover {
+        background: #00ff88;
+        color: #0e0e0e;
+        box-shadow: 0 6px 20px rgba(0, 255, 136, 0.4);
+        transform: translateY(-2px);
+      }
+
+        nav a.active {
+        background: #00ff88;
+        color: #0b0b0b;
+        box-shadow: 0 6px 22px rgba(0, 255, 136, 0.65);
+        font-weight: 600;
+        }
+
+        nav a {
+          transition: all 0.3s ease;
+        }
+
+
+
+      /* MAIN CONTENT SPACING (important for fixed navbar) */
+        main {
+          padding-top: 100px;
+          flex: 1;
+        }
+        /* footer {
+        margin-top: 10px;
+        padding: 12px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.4);
+      } */
+
+      /* optional text */
+
+      /* icons */
+      /* footer a img {
+        height: 34px;
+        width: 34px;
+        padding: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.12);
+        transition: all 0.25s ease;
+      }
+
+      /* hover effect – subtle */
+      /* footer a img:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(0, 255, 136, 0.5);
+        background: rgba(0, 255, 136, 0.25);
+      } */
+
+      /* HAMBURGER ICON */
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+      }
+
+      .menu-toggle span {
+        width: 26px;
+        height: 3px;
+        background: #00ff88;
+        border-radius: 2px;
+      }
+
+      /* MOBILE NAV */
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: flex;
+        }
+
+        nav {
+          position: absolute;
+          top: 70px;
+          right: 20px;
+          width: 200px;
+          flex-direction: column;
+          background: rgba(20, 20, 20, 0.95);
+          border-radius: 14px;
+          padding: 12px;
+          box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+          display: none;
+        }
+
+        nav.show {
+          display: flex;
+        }
+
+        nav a {
+          padding: 10px;
+          border-radius: 10px;
+        }
+      }
+
+    </style>
+    <title>{% block title %}{% endblock%}</title>
+    {% block extra_css %}{% endblock %}
+  </head>
+
+  <body>
+    <div class="nav-container">
+      <h2>Portfolio.</h2>
+    
+      <!-- HAMBURGER -->
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    
+      <nav id="navMenu">
+        <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a>
+        <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a>
+        <a href="{% url 'projects' %}" class="{% if request.resolver_match.url_name == 'projects' %}active{% endif %}">Projects</a>
+        <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a>
+      </nav>
+    </div>    
+    <!-- main content -->
+    {% block content%}{% endblock%}
+
+    <script>
+      function toggleMenu() {
+        document.getElementById("navMenu").classList.toggle("show");
+      }
+    </script>
+  </body>
+</html>
