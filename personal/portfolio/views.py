@@ -24,25 +24,34 @@ def contact(request):
         message = request.POST.get('message')
 
         full_message = f"""
-        New Contact Message
+    New Contact Message
 
-        Name: {name}
-        Email: {email}
+    Name: {name}
+    Email: {email}
 
-        Message:
-        {message}
-        """
+    Message:
+    {message}
+    """
 
-        send_mail(
-            subject="New Contact Form Message",
-            message=full_message,
-            from_email=settings.EMAIL_HOST_USER,
-            recipient_list=[settings.EMAIL_HOST_USER],
-            fail_silently=False,
-        )
+        try:
+            send_mail(
+                subject="New Contact Form Message",
+                message=full_message,
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[settings.EMAIL_HOST_USER],
+                fail_silently=False,
+            )
+            messages.success(
+                request,
+                "Your message has been sent successfully. I’ll get back to you soon!"
+            )
 
-        messages.success(request, "Your message has been sent successfully. I’ll get back to you soon!")
+        except Exception as e:
+            # VERY IMPORTANT: prevents 502
+            print("Email sending failed:", e)
+            messages.error(
+                request,
+                "Message saved, but email service is temporarily unavailable."
+            )
 
-        return redirect('contact')  # or show success message
-
-    return render(request, 'portfolio/contact.html')
+        return redirect('contact')

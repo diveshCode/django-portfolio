@@ -155,3 +155,5 @@ SECRET_KEY = os.environ.get(
     'SECRET_KEY',
     'unsafe-dev-secret-key'
 )
+
+EMAIL_TIMEOUT = 10
