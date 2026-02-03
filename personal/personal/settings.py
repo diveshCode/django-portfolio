@@ -150,3 +150,8 @@ EMAIL_HOST_USER = 'picodewithme@gmail.com'
 EMAIL_HOST_PASSWORD = 'oamnzxngcvykijqs'
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    'unsafe-dev-secret-key'
+)
