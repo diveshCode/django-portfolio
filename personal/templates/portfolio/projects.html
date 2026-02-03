@@ -15,6 +15,14 @@
     letter-spacing: 1px;
   }
 
+  .no_project{
+    margin-top: 110px;
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 42px;
+    color: #c95508;
+    letter-spacing: 1px;
+  }
   /* PROJECT GRID */
   .projects-grid {
     max-width: 1200px;
@@ -92,6 +100,7 @@
 <h1>My Projects</h1>
 
 <div class="projects-grid">
+  {% if projects %}
   {% for project in projects %}
   <div class="project-card">
     <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" />
@@ -102,5 +111,11 @@
     </div>
   </div>
   {% endfor %}
+  {% else %}
+  <h1 class="no_project"> No projecs </h1>
+  {% endif %}
+
+
+
 </div>
 {% endblock %}
