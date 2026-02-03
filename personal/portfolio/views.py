@@ -24,14 +24,14 @@ def contact(request):
         message = request.POST.get('message')
 
         full_message = f"""
-    New Contact Message
+        New Contact Message
 
-    Name: {name}
-    Email: {email}
+        Name: {name}
+        Email: {email}
 
-    Message:
-    {message}
-    """
+        Message:
+        {message}
+        """
 
         try:
             send_mail(
@@ -55,3 +55,5 @@ def contact(request):
             )
 
         return redirect('contact')
+    
+    return render(request, 'portfolio/contact.html')
