@@ -33,6 +33,7 @@ ALLOWED_HOSTS = [
     "diveshjd-portfolio.onrender.com",
     "localhost",
     "127.0.0.1",
+    "divesh-jd.up.railway.app"
 ]
 
 
