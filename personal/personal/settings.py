@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-z8ncm41jxy%1uus@f96g215&2*da=ex648!6@+ft=+gm1dp5=$'
+# SECRET_KEY = 'django-insecure-z8ncm41jxy%1uus@f96g215&2*da=ex648!6@+ft=+gm1dp5=$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = [
     "diveshjd-portfolio.onrender.com",
@@ -132,9 +132,9 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'static',
+# ]
 
 
 MEDIA_URL = '/media/'
@@ -146,14 +146,18 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = 'picodewithme@gmail.com'
-EMAIL_HOST_PASSWORD = 'oamnzxngcvykijqs'
+# EMAIL_HOST_USER = 'picodewithme@gmail.com'
+# EMAIL_HOST_PASSWORD = 'oamnzxngcvykijqs'
+
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-SECRET_KEY = os.environ.get(
-    'SECRET_KEY',
-    'unsafe-dev-secret-key'
-)
+SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-build-key")
+DEBUG = os.getenv("DEBUG", "False") == "True"
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 EMAIL_TIMEOUT = 10
