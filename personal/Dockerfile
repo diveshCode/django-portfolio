@@ -14,6 +14,7 @@ COPY . .
 
 RUN python manage.py collectstatic --noinput
 
-CMD gunicorn personal.wsgi:application --bind 0.0.0.0:$PORT
-
-CMD sh -c "python manage.py migrate && gunicorn personal.wsgi:application --bind 0.0.0.0:$PORT"
+CMD gunicorn personal.wsgi:application \
+  --bind 0.0.0.0:$PORT \
+  --workers 2 \
+  --timeout 120
