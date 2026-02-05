@@ -1,3 +1,4 @@
+from utils.send_email import send_contact_email
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.http import request, HttpResponse
@@ -17,21 +18,21 @@ def projects_view(request):
     projects = Project.objects.all().order_by('-created_at')
     return render(request, 'portfolio/projects.html', {'projects': projects})
 
+from django.shortcuts import render
+
 def contact(request):
     if request.method == "POST":
         name = request.POST.get("name")
         email = request.POST.get("email")
         message = request.POST.get("message")
 
-        try:
-            send_mail(
-                subject=f"New contact from {name}",
-                message=message,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[settings.DEFAULT_FROM_EMAIL],
-                fail_silently=False,
-            )
-        except Exception as e:
-            print("Email sending failed:", e)
+        email_sent = send_contact_email(name, email, message)
+
+        if email_sent:
+            messages.success(request, "Your message has been sent successfully!")
+            return render(request, "portfolio/contact.html", {"success": True})
+        else:
+            messages.error(request, "Failed to send your message.")
+            return render(request, "portfolio/contact.html", {"error": True})
 
     return render(request, "portfolio/contact.html")
