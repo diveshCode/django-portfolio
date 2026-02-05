@@ -19,41 +19,19 @@ def projects_view(request):
 
 def contact(request):
     if request.method == "POST":
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
-
-        full_message = f"""
-        New Contact Message
-
-        Name: {name}
-        Email: {email}
-
-        Message:
-        {message}
-        """
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        message = request.POST.get("message")
 
         try:
             send_mail(
-                subject="New Contact Form Message",
-                message=full_message,
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=[settings.EMAIL_HOST_USER],
+                subject=f"New contact from {name}",
+                message=message,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.DEFAULT_FROM_EMAIL],
                 fail_silently=False,
             )
-            messages.success(
-                request,
-                "Your message has been sent successfully. I’ll get back to you soon!"
-            )
-
         except Exception as e:
-            # VERY IMPORTANT: prevents 502
             print("Email sending failed:", e)
-            messages.error(
-                request,
-                "Message saved, but email service is temporarily unavailable."
-            )
 
-        return redirect('contact')
-    
-    return render(request, 'portfolio/contact.html')
+    return render(request, "portfolio/contact.html")
