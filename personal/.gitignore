@@ -4,7 +4,6 @@ __pycache__/
 
 # Django
 .env
-media/
 
 # VS Code
 .vscode/
