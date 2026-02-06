@@ -13,12 +13,12 @@
 
   /* -------- HERO SECTION -------- */
   .hero {
-    max-width: 2000px;
-    margin: 80px auto 0;
+    max-width: 3000px;
+    margin: 90px auto 0;
     padding: 48px 24px;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 108px;
     align-items: center;
   }
 
@@ -51,17 +51,18 @@
   }
 
   .skill {
-    height: fit-content;
-    padding: 0 30px;
-    padding-bottom: 5px;
-    border-radius: 999px;
+    display: flex;
+    height: 45px;
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 19px;
     border: 2px solid #f06c00;
     background: #e1dada;
-    display: flex;
     color: #333;
     font-weight: 700;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     font-size: 1.5rem;
   }
 
@@ -138,7 +139,7 @@
 <section class="hero">
 
   <!-- Left Content -->
-  <div>
+  <div class="left-content">
     <h1 class="hero-title">
       Python<br />Developer
     </h1>
@@ -148,10 +149,10 @@
     </p>
 
     <div class="skills">
-      <div class="skill">Python</div>
-      <div class="skill">Django</div>
-      <div class="skill">FastAPI</div>
-      <div class="skill">Flask</div>
+      <span class="skill">Python</span>
+      <span class="skill">Django</span>
+      <span class="skill">FastAPI</span>
+      <span class="skill">Flask</span>
     </div>
 
     <div class="btn-wrapper">
